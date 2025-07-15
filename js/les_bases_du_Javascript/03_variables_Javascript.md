@@ -1,3 +1,5 @@
+# Déclarations de variables en JavaScript
+
 ## 2️⃣ `let`
 
 ### Description
@@ -104,7 +106,6 @@ En d’autres termes :
 console.log(a); // undefined
 var a = 5;
 console.log(a); // 5
-
 ```
 
 **Explication :**  
@@ -115,7 +116,6 @@ var a;
 console.log(a); // undefined
 a = 5;
 console.log(a); // 5
-
 ```
 
 La **déclaration** (`var a;`) est levée en haut du scope, mais **l’affectation** (`a = 5`) reste en place.
@@ -132,5 +132,3 @@ javascript
 console.log(b); // ReferenceError
 let b = 10;
 ```
-
-

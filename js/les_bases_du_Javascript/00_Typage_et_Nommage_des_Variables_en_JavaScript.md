@@ -23,8 +23,6 @@ JavaScript possède **7 types primitifs** principaux :
 - **Array** : tableaux indexés
 
 - **Function** : fonctions (objets exécutables)
-  
-  
 
 ## 🖊️ 2. Le Nommage des Variables
 
@@ -70,6 +68,61 @@ console.log(total); // 10
 console.log(Total); // 20
 ```
 
+## ✅ Nommage des Booléens
+
+Quand une variable est un **booléen**, privilégier des préfixes explicites :
+
+| Préfixe  | Exemple                        |
+| -------- | ------------------------------ |
+| `is`     | `isActive`, `isEnabled`        |
+| `has`    | `hasChildren`, `hasPermission` |
+| `can`    | `canEdit`, `canDelete`         |
+| `should` | `shouldRetry`, `shouldSave`    |
+
+**Exemples :**
+
+```js
+let isVisible = true;
+let hasError = false;
+let canSave = true;
+let shouldRender = false;
+```
+
+## ✅ Nommage des Tableaux
+
+Pour les **tableaux**, privilégier :
+
+- Noms **pluriels**
+
+- Ou suffixes `List`, `Array`, `Items`
+
+**Exemples :**
+
+```js
+let users = ["Alice", "Bob"];
+let errorMessages = [];
+let productIds = [1, 2, 3];
+let selectedItems = [];
+```
+
+## ✅ Nommage des Objets
+
+Pour les **objets**, privilégier :
+
+- Noms **singuliers**
+
+- Eventuellement suffixes `Data`, `Info`, `Config`
+
+**Exemples :**
+
+```js
+let user = { name: "Alice", age: 30 };
+let config = { darkMode: true };
+let orderInfo = { id: 123, total: 49.99 };
+```
+
+
+
 ## 🧪 3. Vérifier le Type
 
 Pour connaître le type d’une variable, utiliser `typeof` :
@@ -96,5 +149,3 @@ console.log(typeof x); // "number"
 - [MDN - typeof](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Operators/typeof)
 
 - [JavaScript Guide - Nommage](https://developer.mozilla.org/fr/docs/Glossaire/Identificateur)
-
-
