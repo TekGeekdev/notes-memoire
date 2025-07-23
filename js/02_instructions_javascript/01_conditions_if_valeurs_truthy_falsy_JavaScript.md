@@ -1,7 +1,5 @@
 # 🌟Les conditions `if`, les valeurs truthy et falsy en JavaScript
 
-
-
 ## 🧠 1. C’est quoi une condition ?
 
 Une condition permet d’exécuter un bloc de code **seulement si une certaine expression est vraie**.
@@ -137,8 +135,6 @@ Nom : Alice
 
 👉 `user.age` vaut `0`, donc c’est falsy, même si c’est une valeur "valide".
 
-
-
 ## ⚠️ 4. Bonnes pratiques
 
 - Toujours vérifier explicitement si c’est ce que tu veux comparer :
@@ -155,8 +151,6 @@ if (user.age !== undefined) {
 if (myString) { ... }
 ```
 
-
-
 ## 🧩 5. Syntaxe abrégée : opérateur ternaire
 
 Format court d’un `if...else` :
@@ -166,8 +160,6 @@ let message = (age >= 18) ? "Majeur" : "Mineur";
 ```
 
 Si majeur dit (?) "Majeur" sinon (:) "Mineur"
-
-
 
 ## 📌 Résumé
 
@@ -180,8 +172,6 @@ Si majeur dit (?) "Majeur" sinon (:) "Mineur"
 | `falsy`          | Valeurs considérées comme `false`         |
 | `? :` (ternaire) | Écriture courte de `if...else`            |
 
-
-
 #### 📚 Liens utiles
 
 - [if…else - JavaScript | MDN](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Statements/if...else)
@@ -191,5 +181,93 @@ Si majeur dit (?) "Majeur" sinon (:) "Mineur"
 - [Truthy - Glossary | MDN](https://developer.mozilla.org/en-US/docs/Glossary/Truthy)
 
 - [Falsy - Glossary | MDN](https://developer.mozilla.org/en-US/docs/Glossary/Falsy)
+
+
+
+## Bonus
+
+### Décomposition des conditions complexes
+
+#### Objectif
+
+En programmation, on écrit souvent des **conditions `if` complexes** avec plusieurs opérateurs logiques (`&&`, `||`, `!`).  
+Mais plus la condition est longue, plus elle devient difficile à lire, à comprendre ou à corriger.
+
+👉 L’objectif est donc de **décomposer** une condition complexe en **sous-conditions nommées** pour améliorer la **lisibilité**, la **maintenance** et le **débogage** du code.
+
+😵 Exemple de condition complexe
+
+```js
+if ((user.isLoggedIn && user.role === 'admin' && user.accountActive) || user.isSuperAdmin) {
+  showDashboard();
+}
+```
+
+### ❌ Problèmes :
+
+- Difficile à lire rapidement.
+
+- Plusieurs responsabilités dans une seule ligne.
+
+- Difficile à tester ou modifier sans casser quelque chose.
+
+## 🛠️ Décomposition en sous-conditions
+
+On peut **isoler** chaque partie dans une constante bien nommée :
+
+```js
+const isRegularAdmin = user.isLoggedIn && user.role === 'admin' && user.accountActive;
+const hasAccess = isRegularAdmin || user.isSuperAdmin;
+
+if (hasAccess) {
+  showDashboard();
+}
+```
+
+### ✅ Avantages :
+
+| Avant              | Après                                      |
+| ------------------ | ------------------------------------------ |
+| Long et confus     | Clair et organisé                          |
+| Pas réutilisable   | Les constantes peuvent être réutilisées    |
+| Difficile à tester | On peut tester chaque condition séparément |
+
+
+
+### 🧪 Autre exemple : formulaire d’inscription
+
+**🧩 Condition complexe**
+
+```js
+if (user.age >= 18 && user.email.includes("@") && user.password.length >= 8 && !user.isBanned) {
+  registerUser();
+}
+```
+
+**✅ Décomposée pour plus de clarté :**
+
+```js
+const isAdult = user.age >= 18;
+const hasValidEmail = user.email.includes("@");
+const hasStrongPassword = user.password.length >= 8;
+const isAllowed = !user.isBanned;
+
+const canRegister = isAdult && hasValidEmail && hasStrongPassword && isAllowed;
+
+if (canRegister) {
+  registerUser();
+}
+```
+
+## 📝 Conclusion
+
+🔹 **Mieux vaut plusieurs petites conditions bien nommées qu’une grosse condition illisible.**  
+🔹 Cela permet de rendre le code **plus clair**, **plus testable** et **plus facile à maintenir**.
+
+
+
+### 📚 Liens utiles bonus
+
+[Intermediate to advanced content level Clean code Book](https://www.oreilly.com/library/view/clean-code-a/9780136083238/)
 
 
