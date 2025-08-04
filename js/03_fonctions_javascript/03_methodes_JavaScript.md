@@ -8,8 +8,6 @@ Autrement dit, c’est **une action que peut faire un objet**.
 
 > 🟰 Une méthode, c’est une **fonction liée à un objet**.
 
-
-
 ## Syntaxe de base
 
 ```js
@@ -37,8 +35,6 @@ utilisateur.saluer(); // Bonjour, je m'appelle Alice
 
 🔎 `this.nom` fait référence à la propriété `nom` de l’objet `utilisateur`.
 
-
-
 ## Méthodes raccourcies (ES6)
 
 Depuis ES6, tu peux écrire les méthodes de manière plus courte :
@@ -54,8 +50,6 @@ const utilisateur = {
 utilisateur.saluer(); // Salut, je suis Bob
 ```
 
-
-
 ## 👀 Différence entre fonction et méthode
 
 | Fonction                    | Méthode                                  |
@@ -63,8 +57,6 @@ utilisateur.saluer(); // Salut, je suis Bob
 | Définie seule, hors objet   | Définie à l’intérieur d’un objet         |
 | `function direBonjour() {}` | `utilisateur.saluer = function () {}`    |
 | Appelée directement         | Appelée via un objet : `objet.methode()` |
-
-
 
 ## 🔄 Méthodes natives de JS
 
@@ -89,8 +81,6 @@ nombres.push(4); // ajoute 4 à la fin
 console.log(nombres); // [1, 2, 3, 4]
 ```
 
-
-
 ## 🧠 À retenir
 
 - Une **méthode est une fonction attachée à un objet**.
@@ -100,5 +90,11 @@ console.log(nombres); // [1, 2, 3, 4]
 - Tu peux créer tes propres méthodes ou utiliser celles fournies par JS (sur les strings, arrays, etc.).
 
 - Tu peux utiliser `this` dans une méthode pour parler de l’objet lui-même.
+
+
+
+## 📚 Liens utiles
+
+- [Prototypes Objet - Apprendre le développement web | MDN](https://developer.mozilla.org/fr/docs/Learn_web_development/Extensions/Advanced_JavaScript_objects/Object_prototypes)
 
 
