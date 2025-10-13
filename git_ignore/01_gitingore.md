@@ -1,0 +1,13 @@
+# macOS system files
+
+.DS_Store
+\*\*/.DS_Store
+
+# Environment files
+
+.env
+**/.env
+\*.env
+**/\*.env
+!.env.example
+!\*\*/.env.example

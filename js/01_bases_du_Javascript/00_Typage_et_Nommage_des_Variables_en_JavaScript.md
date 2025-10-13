@@ -121,8 +121,6 @@ let config = { darkMode: true };
 let orderInfo = { id: 123, total: 49.99 };
 ```
 
-
-
 ## 🧪 3. Vérifier le Type
 
 Pour connaître le type d’une variable, utiliser `typeof` :
@@ -135,17 +133,53 @@ x = 42;
 console.log(typeof x); // "number"
 ```
 
-## 📝 Résumé
+## 🧩 Tableau récapitulatif des conventions de nommage de fonctions
+
+| Préfixe / Modèle | Description                                | Exemple d’utilisation                 |
+| ---------------- | ------------------------------------------ | ------------------------------------- |
+| `get...()`       | Retourne une valeur                        | `getUserName()`, `getWeather()`       |
+| `set...()`       | Affecte ou met à jour une valeur           | `setUserAge()`, `setTheme()`          |
+| `is...()`        | Retourne un booléen                        | `isAuthenticated()`, `isVisible()`    |
+| `has...()`       | Vérifie une propriété                      | `hasAccess()`, `hasPermission()`      |
+| `can...()`       | Vérifie une capacité ou un droit           | `canEdit()`, `canSave()`              |
+| `should...()`    | Indique une condition logique              | `shouldRender()`, `shouldRetry()`     |
+| `check...()`     | Vérifie une condition (similaire à `is`)   | `checkPassword()`, `checkInput()`     |
+| `create...()`    | Crée un nouvel élément ou objet            | `createUser()`, `createListElement()` |
+| `build...()`     | Construit une structure complexe           | `buildQuery()`, `buildFormData()`     |
+| `generate...()`  | Produit quelque chose de nouveau           | `generateToken()`, `generateReport()` |
+| `calc...()`      | Effectue un calcul et retourne le résultat | `calcTotal()`, `calcAverage()`        |
+| `update...()`    | Met à jour une valeur existante            | `updateProfile()`, `updateStatus()`   |
+| `remove...()`    | Supprime un élément                        | `removeItem()`, `removeUser()`        |
+| `delete...()`    | Supprime (souvent en base de données)      | `deleteRecord()`, `deleteFile()`      |
+| `fetch...()`     | Récupère des données à distance            | `fetchUsers()`, `fetchPosts()`        |
+| `to...()`        | Convertit un type vers un autre            | `toString()`, `toJSON()`, `toEUR()`   |
+| `handle...()`    | Gère un événement ou une action            | `handleClick()`, `handleSubmit()`     |
+| `render...()`    | Affiche ou renvoie un élément visuel       | `renderPage()`, `renderButton()`      |
+| `load...()`      | Charge des ressources ou données           | `loadData()`, `loadImage()`           |
+| `save...()`      | Enregistre des données                     | `saveFile()`, `saveSettings()`        |
+
+💡 Ces conventions sont inspirées des bonnes pratiques JavaScript modernes, notamment celles recommandées par **MDN**, **Airbnb JavaScript Style Guide** et **Clean Code (Robert C. Martin)**.
+
+
+
+#### 📝 Résumé
 
 ✅ JavaScript est **dynamiquement typé**  
 ✅ Les variables changent de type au cours du programme  
-✅ Respecter les conventions de nommage pour un code lisible  
-✅ Utiliser `typeof` pour vérifier le type
+✅ Respecter les conventions de nommage rend le code **prévisible et clair**  
+✅ Utiliser des **préfixes cohérents** selon le type de variable ou de fonction  
+✅ Utiliser `typeof` pour vérifier le type d’une variable
 
-## 📚 Liens Utiles
+
+
+### 📚 Liens Utiles
 
 - [MDN - Types](https://developer.mozilla.org/fr/docs/Web/JavaScript/Data_structures)
 
 - [MDN - typeof](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Operators/typeof)
 
-- [JavaScript Guide - Nommage](https://developer.mozilla.org/fr/docs/Glossaire/Identificateur)
+- [JavaScript.info - Variables](https://fr.javascript.info/variableshttps://fr.javascript.info/variables)
+
+- [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
+
+- [Clean Code JavaScript (GitHub)](https://github.com/ryanmcdermott/clean-code-javascript)](https://developer.mozilla.org/fr/docs/Glossaire/Identificateur)
