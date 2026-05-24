@@ -380,8 +380,8 @@ CLAUDE CODE
 
 ## 📚 Sources
 
-- [Référence complète des outils — Claude Code](https://code.claude.com/docs/en/tools-reference.md)
-- [Référence CLI — Claude Code](https://code.claude.com/docs/en/cli-reference.md)
-- [Mode interactif et raccourcis clavier](https://code.claude.com/docs/en/interactive-mode.md)
-- [Référence des commandes slash](https://code.claude.com/docs/en/commands.md)
+- [Référence complète des outils — Claude Code](https://code.claude.com/docs/en/tools-reference)
+- [Référence CLI — Claude Code](https://code.claude.com/docs/en/cli-reference)
+- [Mode interactif et raccourcis clavier](https://code.claude.com/docs/en/interactive-mode)
+- [Référence des commandes slash](https://code.claude.com/docs/en/commands)
 - [MCP — Model Context Protocol](https://code.claude.com/docs/fr/mcp)
