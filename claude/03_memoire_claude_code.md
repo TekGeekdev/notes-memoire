@@ -35,12 +35,12 @@ Claude Code propose deux mécanismes complémentaires pour garder le contexte en
 └──────────────────────────┴──────────────────────────────┘
 ```
 
-| | CLAUDE.md | Auto Memory |
-|---|---|---|
-| **Auteur** | Toi | Claude |
-| **Contenu** | Instructions et règles | Apprentissages et patterns |
-| **Portée** | Projet, utilisateur, ou organisation | Par dépôt Git |
-| **Chargé** | Entièrement à chaque session | 200 premières lignes / 25 Ko |
+|             | CLAUDE.md                            | Auto Memory                           |
+| ----------- | ------------------------------------ | ------------------------------------- |
+| **Auteur**  | Toi                                  | Claude                                |
+| **Contenu** | Instructions et règles               | Apprentissages et patterns            |
+| **Portée**  | Projet, utilisateur, ou organisation | Par dépôt Git                         |
+| **Chargé**  | Entièrement à chaque session         | 200 premières lignes / 25 Ko          |
 | **Utilité** | Conventions, architecture, workflows | Commandes de build, insights de debug |
 
 ---
@@ -64,28 +64,33 @@ Un fichier Markdown que Claude lit **au début de chaque session**. C'est l'endr
 # Mon Projet
 
 ## Stack technique
+
 - React 18 + TypeScript + Vite
 - Tests : Vitest + Testing Library
 - Style : Tailwind CSS (pas de CSS modules)
 
 ## Commandes essentielles
+
 - `npm run dev` — serveur de développement
 - `npm test` — lance les tests en mode watch
 - `npm run build` — build de production
 
 ## Conventions de code
+
 - Utiliser `const` par défaut, jamais `var`
 - Les composants React : PascalCase, un fichier par composant
 - Les hooks personnalisés commencent par `use`
 - Toujours typer les props des composants avec une `interface`, pas un `type`
 
 ## Architecture
+
 - `src/components/` — composants réutilisables
 - `src/pages/` — pages (un dossier par route)
 - `src/hooks/` — hooks personnalisés
 - `src/api/` — appels API (utiliser React Query)
 
 ## Règles importantes
+
 - Ne jamais pusher directement sur `main`
 - Toujours lancer `npm test` avant de committer
 - Les clés API ne vont jamais dans le code — utiliser `.env.local`
@@ -140,6 +145,8 @@ Les fichiers CLAUDE.md peuvent être placés à plusieurs niveaux, chacun avec u
 - Token d'API de test : sk-dev-xxxx (jamais en prod)
 ```
 
+Pour les préférences personnelles privées par projet qui ne doivent pas être validées dans le contrôle de version, créez un CLAUDE.local.md à la racine du projet. Il se charge aux côtés de CLAUDE.md et est traité de la même manière. Ajoutez CLAUDE.local.md à votre .gitignore pour qu’il ne soit pas validé => exécuter /init et choisir l’option personnelle le fait pour vous.
+
 ---
 
 ## Organiser les règles avec `.claude/rules/`
@@ -163,7 +170,7 @@ Une règle peut ne s'appliquer que quand Claude travaille sur certains fichiers 
 ```markdown
 ---
 paths:
-  - "src/api/**/*.ts"
+  - 'src/api/**/*.ts'
 ---
 
 # Règles pour les endpoints API
@@ -173,12 +180,14 @@ paths:
 - Documenter chaque endpoint avec un commentaire JSDoc
 ```
 
-| Pattern | Fichiers ciblés |
-|---------|----------------|
-| `**/*.ts` | Tous les fichiers TypeScript |
-| `src/**/*` | Tout ce qui est sous `src/` |
-| `*.md` | Fichiers Markdown à la racine |
-| `**/*.{ts,tsx}` | TypeScript et TSX partout |
+Ces règles conditionnelles ne s'appliquent que lorsque Claude travaille avec des fichiers correspondant aux patterns spécifiés. Les règles sans champ paths sont chargées inconditionnellement et s'appliquent à tous les fichiers. Les règles scopées par chemin se déclenchent quand Claude lit des fichiers correspondant au pattern, pas à chaque utilisation d'outil.
+
+| Pattern         | Fichiers ciblés               |
+| --------------- | ----------------------------- |
+| `**/*.ts`       | Tous les fichiers TypeScript  |
+| `src/**/*`      | Tout ce qui est sous `src/`   |
+| `*.md`          | Fichiers Markdown à la racine |
+| `**/*.{ts,tsx}` | TypeScript et TSX partout     |
 
 ---
 
@@ -192,6 +201,7 @@ Au lieu de l'écrire manuellement, Claude peut analyser ton projet et générer 
 ```
 
 Claude va :
+
 1. Analyser la structure de ton projet
 2. Détecter les commandes de build et de test
 3. Identifier les conventions déjà en place
@@ -212,6 +222,7 @@ Voir @README.md pour la présentation du projet.
 Commandes npm disponibles : @package.json
 
 ## Instructions supplémentaires
+
 - Workflow Git : @docs/git-workflow.md
 ```
 
@@ -265,11 +276,13 @@ Quand tu vois **"Writing memory"** ou **"Recalled memory"** dans l'interface, c'
 L'auto memory est **activée par défaut**. Pour la désactiver :
 
 **Depuis une session :**
+
 ```
 /memory   ← ouvre le menu → toggle auto memory
 ```
 
 **Dans les paramètres du projet** (`.claude/settings.json`) :
+
 ```json
 {
   "autoMemoryEnabled": false
@@ -277,6 +290,7 @@ L'auto memory est **activée par défaut**. Pour la désactiver :
 ```
 
 **Via variable d'environnement :**
+
 ```bash
 export CLAUDE_CODE_DISABLE_AUTO_MEMORY=1
 ```
@@ -330,15 +344,16 @@ Tu peux aussi demander à Claude directement :
 
 ### Écrire des instructions vérifiables
 
-| Trop vague | Concret et utile |
-|------------|-----------------|
+| Trop vague                   | Concret et utile                                         |
+| ---------------------------- | -------------------------------------------------------- |
 | "Formate le code proprement" | "Utilise 2 espaces d'indentation, jamais de tabulations" |
-| "Teste tes changements" | "Lance `npm test` avant chaque commit" |
-| "Organise bien les fichiers" | "Les handlers API vont dans `src/api/handlers/`" |
+| "Teste tes changements"      | "Lance `npm test` avant chaque commit"                   |
+| "Organise bien les fichiers" | "Les handlers API vont dans `src/api/handlers/`"         |
 
 ### Éviter les contradictions
 
 Si deux fichiers CLAUDE.md donnent des instructions contradictoires, Claude choisit arbitrairement. Vérifie régulièrement la cohérence entre :
+
 - `CLAUDE.md` racine
 - `CLAUDE.local.md`
 - Les fichiers dans `.claude/rules/`
@@ -386,8 +401,8 @@ Lance `/memory` et ouvre le dossier de mémoire auto — tout est en Markdown li
 ## Points clés à retenir
 
 - Chaque session Claude Code commence avec une **fenêtre de contexte vide** — la mémoire est ce qui permet la continuité.
-- **CLAUDE.md** = ce que *tu* écris pour donner des instructions durables à Claude.
-- **Auto Memory** = ce que *Claude* écrit pour mémoriser ses apprentissages.
+- **CLAUDE.md** = ce que _tu_ écris pour donner des instructions durables à Claude.
+- **Auto Memory** = ce que _Claude_ écrit pour mémoriser ses apprentissages.
 - Les deux sont **chargés automatiquement** au début de chaque session.
 - `/init` génère un CLAUDE.md de départ en analysant ton projet.
 - `/memory` est la commande centrale pour gérer les deux systèmes.
